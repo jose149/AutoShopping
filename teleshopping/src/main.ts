@@ -1,4 +1,4 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import TeleShopping from './TeleShopping.vue'
 
-createApp(App).mount('#app')
+createApp(TeleShopping).mount('#app')

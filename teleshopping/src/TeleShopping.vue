@@ -7,12 +7,13 @@ import { defineComponent } from 'vue';
 import NavigationBar from './components/NavigationBar.vue'
 
 export default defineComponent({
-  name: 'App',
+  name: 'TeleShopping',
   components: {
     NavigationBar
   }
 });
 </script>
 
-<style>
+<style scoped lang="scss">
+  @import "@/style/Global.scss";
 </style>
