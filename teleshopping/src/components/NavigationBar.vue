@@ -5,9 +5,13 @@
     alt="Logo">
     <ul class="navigation-bar__list">
       <li class="navigation-bar__list-item"
-      v-for="section in sections"
-      :key="section.link">
-      <a class="navigation-bar__list-link" :href="section.path">{{section.link}}</a>
+        v-for="section in sections"
+        :key="section.title">
+        <a 
+          class="navigation-bar__list-link" 
+          :href="section.path">
+          {{section.title}}
+        </a>
       </li>
     </ul>
     <div class="navigation-bar__contact">CONTACT</div>
@@ -22,10 +26,10 @@ export default defineComponent({
   name: 'NavigationBar',
   setup(){
     const sections = ref([
-      {link: "Section 1", path: "/"},
-      {link: "Section 2", path: "/"},
-      {link: "Section 3", path: "/"},
-      {link: "Section 4", path: "/"}
+      {title: "Cocina", path: "/"},
+      {title: "Recetas", path: "/"},
+      {title: "Compra", path: "/"},
+      {title: "Configuracion", path: "/"},
     ])
     return{
       sections
@@ -39,11 +43,15 @@ export default defineComponent({
 <style scoped lang="scss">
   @import "@/style/Global.scss";
   .navigation-bar{
-    background-color: $background;
-    height: 100px;
+    border-bottom: 3px solid $background-light;
+    box-sizing: border-box;
+    padding: 5px 50px;
+    background-color: $background-dark;
+    height: 15vh;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    z-index: 1;
 
     &__logo{
       height: 100%;
@@ -52,20 +60,30 @@ export default defineComponent({
     &__list{
       display: flex;
       flex-direction: row;
+      align-items: center;
       list-style: none;
-    }
 
-    &__list-item{
-      padding: 15px 20px;
-      
-    }
+      &-item{
+        
+      }
 
-    &__list-link{
-      text-decoration: none;
-      color: $white;
+      &-link{
+        margin: 0 5px;
+        border-radius: 10px;
+        padding: 10px 15px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $white;
+        transition: 100ms;
+        &:hover{
+          background-color: $primary;
+        }
+      }
     }
 
     &__contact{
+      display: flex;
+      align-items: center;
       color: $white;
     }
 
