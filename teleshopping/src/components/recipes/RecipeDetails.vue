@@ -2,35 +2,37 @@
   <div class="recipe-panel">
     <h3 class="recipe-panel__header">{{recipe?.title}}</h3>
     <button class="btn recipe-panel__close"
-      @click="$emit('close-recipe-panel')"
+      @click="closeRecipePanel()"
     >X</button>
-    <img 
-      :src="'../../../../images/' + recipe!.image.src" 
-      :alt="recipe!.image.alt"/>
     <h4>Ingredients</h4>
-    <ul>
-      <li
-      v-for="ingredient in recipe!.ingredients"
-      :key="ingredient.id"
-      >
-      {{ingredient.name}} {{ingredient.amount.value}}{{ingredient.amount.unit}}
-      </li>
-    </ul>
   </div>
 </template>
 
 <script lang="ts">
-import { Recipe } from '@/interfaces';
+import { Ingredient, Recipe } from '@/interfaces';
 import { defineComponent, PropType } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+//  import { createComponent, reactive, PropType} from '@vue/composition-api'
 
 export default defineComponent({
-  name: 'RecipePanel',
+  name: 'RecipeDetails',
   props: {
     recipe: { type: Object as PropType<Recipe> },
+    ingredients: { type: Array as PropType<Ingredient[]> },
+    // recipeId: {type: String as PropType<string>}
   },
-  setup(props){
-    console.log(props.recipe)
+  setup(){
+    const route = useRoute();
+    const router = useRouter();
+    console.log(route.params.recipeId);
+    function closeRecipePanel(){
+      // selectedRecipe.value = undefined
+      // selectedIngredients.value = []
+      // isRecipePanelOpen.value = false;
+      router.push('/recipes')
+    }
     return{
+      closeRecipePanel,
     }
   }
 });

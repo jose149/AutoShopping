@@ -1,60 +1,46 @@
 <template>
   <div class="section">
-    <h2>Recipes</h2>
-    <div class="recipes-wrapper">
+    <h2 class="section__heading">Recipes</h2>
+    <div class="recipes-carrousel">
       <RecipeBox
         v-for="recipe in recipes"
         :key="recipe.id"
         :recipe="recipe"
-        @recipe-selected="openRecipePanel(recipe!.id)"
       />
     </div>
-    <RecipePanel
-      v-if="isRecipePanelOpen"
-     :recipe="recipeSelected"
-     @close-recipe-panel="closeRecipePanel"
-    />
   </div>
 </template>
 
 <script lang="ts">
-import { fakeRecipes } from '@/tests/FakeData';
-import { defineComponent, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { Ingredient, Recipe } from '@/interfaces';
+import { defineComponent, inject, ref } from 'vue';
 import RecipeBox from './RecipeBox.vue';
-import RecipePanel from './RecipePanel.vue';
+import { 
+  RecipeStateKey,
+  WindowsStateKey
+} from '@/state/state';
+
 
 export default defineComponent({
   name: 'RecipesSection',
   components: {
     RecipeBox,
-    RecipePanel
   },
   setup(){
-    const recipes = fakeRecipes;
+    const {
+      recipes,
+      ingredients
+    } = inject(RecipeStateKey)!
 
-    const isRecipePanelOpen = ref(false)
-    const recipeSelected = ref()
-    function openRecipePanel(recipeId:string){
-      recipeSelected.value = recipes.find((recipe) => 
-        recipe.id === recipeId
-      )
-      isRecipePanelOpen.value = true;
-    }
-    function closeRecipePanel(){
-      isRecipePanelOpen.value = false;
-    }
+    const{
+      isRecipeDetailsPanelOpened
+    } = inject(WindowsStateKey)!
 
-    const route = useRoute();
-    const recipeId = route.params.recipeId;
-    
+    const selectedRecipe = ref<Recipe>()
+    const selectedIngredients = ref<Ingredient[]>([])  
 
     return{
       recipes,
-      recipeSelected,
-      isRecipePanelOpen,
-      openRecipePanel,
-      closeRecipePanel
     }
   }
 });
@@ -66,6 +52,20 @@ export default defineComponent({
   .section{
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__heading{
+      font-size: $heading-2;
+    }
+  }
+  .recipes-carrousel{
+    height: 50vh;
+    width: 80%;
+    display: flex;
+    padding: 100px 50px;
+    box-sizing: border-box;
+    background-color: red;
   }
   
 </style>

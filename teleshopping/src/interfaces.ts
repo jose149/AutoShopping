@@ -2,7 +2,7 @@ export interface Recipe {
   id: string,
   title: string,
   image: Image,
-  ingredients: Ingredient[]
+  ingredientsId: string[]
 }
 
 export interface Image {
@@ -24,4 +24,8 @@ export interface IngredientAmount {
 export enum UnitEnumerator {
   weight = 'gr',
   volume = 'ml'
+}
+
+export interface queryParams{
+  recipeId: string,
 }

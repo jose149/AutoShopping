@@ -1,18 +1,14 @@
 <template>
   <div class="recipe-box">
-    <h2 class="recipe-box__header">{{recipe!.title}}</h2>
-    <img 
-      :src="'../../../../images/' + recipe!.image.src" 
-      :alt="recipe!.image.alt"/>
-    <button class="recipe-box__button"
-      @click="$emit('recipe-selected', recipe!.id)"> See more 
-    </button>
+    <div class="recipe-box__picture" ></div>
+    <h3 class="recipe-box__heading">{{recipe!.title}}</h3>
+    <router-link :to="'/recipes/' + recipeId ">View Details</router-link>
   </div>
 </template>
 
 <script lang="ts">
 import { Recipe } from '@/interfaces';
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, ref } from 'vue';
 
 export default defineComponent({
   name: 'RecipeBox',
@@ -22,8 +18,10 @@ export default defineComponent({
   emits:[
     "recipe-selected"
   ],
-  setup(){
+  setup(props){
+    const recipeId = ref<string>(props.recipe!.id)
     return{
+      recipeId
     }
   }
 });
@@ -32,9 +30,20 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import "@/style/Global.scss";
-  .recipe{
+  .recipe-box{
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__picture{
+      width: 100%;
+      height: 100%;
+    }
+    &__heading{
+      font-size: 30px;
+    }
   }
   
 </style>
