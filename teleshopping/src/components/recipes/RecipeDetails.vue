@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="recipe-panel">
     <h3 class="recipe-panel__header">{{recipe?.title}}</h3>
     <button class="btn recipe-panel__close"
@@ -6,9 +6,8 @@
     >X</button>
     <h4>Ingredients</h4>
   </div>
-</template>
-
-<script lang="ts">
+</template> -->
+<!-- <script lang="ts">
 import { Ingredient, Recipe } from '@/interfaces';
 import { defineComponent, PropType } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -19,16 +18,12 @@ export default defineComponent({
   props: {
     recipe: { type: Object as PropType<Recipe> },
     ingredients: { type: Array as PropType<Ingredient[]> },
-    // recipeId: {type: String as PropType<string>}
   },
   setup(){
     const route = useRoute();
     const router = useRouter();
     console.log(route.params.recipeId);
     function closeRecipePanel(){
-      // selectedRecipe.value = undefined
-      // selectedIngredients.value = []
-      // isRecipePanelOpen.value = false;
       router.push('/recipes')
     }
     return{
@@ -36,7 +31,7 @@ export default defineComponent({
     }
   }
 });
-</script>
+</script> -->
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">

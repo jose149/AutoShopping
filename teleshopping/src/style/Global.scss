@@ -1,7 +1,23 @@
 $color-white: #FFFFFF;
 $color-black: #000000;
 $color-primary: #ba283d;
+$color-primary-2: #ae2539;
 $color-background-dark: #191e1c;
 $color-background-light: #c7e1dc;
 
-$heading-2: 50px
+$heading-2: 50px;
+
+*,*::before,*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html{
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  // @media only screen and (max-width: $bp-large){
+  //     font-size: 50%;
+  // }    
+}

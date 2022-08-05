@@ -24,7 +24,7 @@ import {
 export default defineComponent({
   name: 'RecipesSection',
   components: {
-    RecipeBox,
+    // RecipeBox,
   },
   setup(){
     const {

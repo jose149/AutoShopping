@@ -12,7 +12,7 @@ import NavigationBar from './components/nav/NavigationBar.vue'
 import { setUpRecipeState } from './state/recipeState'
 import { setUpWindowsState } from './state/windowsState'
 import { RecipeStateKey, WindowsStateKey } from './state/state'
-import { TeleShoppingRouter } from './TeleShoppingRouter';
+import { TeleShoppingRouter } from './router/TeleShoppingRouter';
 import { createTeleShoppingVm } from './TeleShoppingViewModel'
 
 export default defineComponent({
@@ -20,18 +20,18 @@ export default defineComponent({
   components: {
     NavigationBar,
   },
-  setup(props){
+  setup(){
     const route = useRoute()
+
     const teleShoppingRouter = new TeleShoppingRouter()
-    const URLParams = teleShoppingRouter.getQuery(route)
-
-    const recipeState = setUpRecipeState(
-      {
-        recipeId: URLParams.recipeId
-      }
-    )
+    // const URLParams = teleShoppingRouter.getQuery(route)
+    // const recipeState = setUpRecipeState(
+    //   {
+    //     recipeId: URLParams.recipeId
+    //   }
+    // )
+    const recipeState = setUpRecipeState()
     const windowsState = setUpWindowsState(recipeState)
-
     provide(RecipeStateKey, recipeState)
     provide(WindowsStateKey, windowsState)
 
@@ -40,13 +40,7 @@ export default defineComponent({
       recipeState,
       windowsState
     )
-    
-    // watch([recipeState.recipeId],
-    // () => teleShoppingRouter.setQuery(
-    //   {
-    //     recipe: recipeState.recipes,
-    //   }
-    // ))
+
     return{
       teleShopping,
       ...recipeState,

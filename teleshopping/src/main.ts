@@ -1,8 +1,9 @@
 import { createApp } from 'vue'
 import App from './TeleShopping.vue'
-import { router } from './TeleShoppingRouter'
+import { teleShoppingRouter } from './router/TeleShoppingRouter'
+
 
 
 const app = createApp(App)
-app.use(router)
+app.use(teleShoppingRouter)
 app.mount('#app')
