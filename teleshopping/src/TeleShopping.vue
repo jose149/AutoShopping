@@ -7,12 +7,12 @@
 
 <script lang="ts">
 import { defineComponent, provide } from 'vue';
-import { useRoute } from 'vue-router';
+// import { useRoute } from 'vue-router';
 import NavigationBar from './components/nav/NavigationBar.vue'
 import { setUpRecipeState } from './state/recipeState'
 import { setUpWindowsState } from './state/windowsState'
 import { RecipeStateKey, WindowsStateKey } from './state/state'
-import { TeleShoppingRouter } from './router/TeleShoppingRouter';
+// import { TeleShoppingRouter } from './router/TeleShoppingRouter';
 import { createTeleShoppingVm } from './TeleShoppingViewModel'
 
 export default defineComponent({
@@ -21,9 +21,8 @@ export default defineComponent({
     NavigationBar,
   },
   setup(){
-    const route = useRoute()
-
-    const teleShoppingRouter = new TeleShoppingRouter()
+    // const route = useRoute()
+    // const teleShoppingRouter = new TeleShoppingRouter()
     // const URLParams = teleShoppingRouter.getQuery(route)
     // const recipeState = setUpRecipeState(
     //   {

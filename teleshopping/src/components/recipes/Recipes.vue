@@ -60,12 +60,13 @@ export default defineComponent({
     }
   }
   .recipes-carrousel{
-    height: 50vh;
+    height: 80vh;
     width: 80%;
     display: flex;
     padding: 100px 50px;
     box-sizing: border-box;
-    background-color: red;
+    background-color: $color-background-dark;
+    border: 3px solid yellow
   }
   
 </style>
