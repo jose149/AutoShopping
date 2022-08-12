@@ -5,6 +5,7 @@ export function setUpWindowsState(
   recipeState: RecipeState
 ){
   const isRecipeDetailsPanelOpened = ref<boolean>(false);
+  
   const result = {
     isRecipeDetailsPanelOpened
   }

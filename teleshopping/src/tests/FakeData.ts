@@ -9,7 +9,7 @@ export const fakeRecipes:Recipe[] =
         src: "../../../../images/espaguetis.jpeg",
         alt: "espaguetis"
       },
-      ingredientsId: ['I0', 'I1', 'I2']
+      ingredients: ['Tomatoes', 'Pasta', 'Water']
     },
     {
       id: "R2",
@@ -18,8 +18,62 @@ export const fakeRecipes:Recipe[] =
         src: "pizza.jpg",
         alt: "pizza"
       },
-      ingredientsId: ['I0', 'I2', 'I3', 'I4', 'I5']
-    }
+      ingredients: ['Tomatoes', 'Water', 'Flour', 'Cheese', 'Jam']
+    },
+    {
+      id: "R3",
+      title: "Piña",
+      image: {
+        src: "../../../../images/espaguetis.jpeg",
+        alt: "espaguetis"
+      },
+      ingredients: ['Tomatoes', 'Pasta', 'Water']
+    },
+    {
+      id: "R4",
+      title: "Arroz",
+      image: {
+        src: "../../../../images/espaguetis.jpeg",
+        alt: "espaguetis"
+      },
+      ingredients: ['Tomatoes', 'Pasta', 'Water']
+    },
+    {
+      id: "R5",
+      title: "Rabiolis",
+      image: {
+        src: "../../../../images/espaguetis.jpeg",
+        alt: "espaguetis"
+      },
+      ingredients: ['Tomatoes', 'Pasta', 'Water']
+    },
+    {
+      id: "R6",
+      title: "Parmessana",
+      image: {
+        src: "../../../../images/espaguetis.jpeg",
+        alt: "espaguetis"
+      },
+      ingredients: ['Tomatoes', 'Pasta', 'Water']
+    },
+    {
+      id: "R7",
+      title: "Cahmpu",
+      image: {
+        src: "../../../../images/espaguetis.jpeg",
+        alt: "espaguetis"
+      },
+      ingredients: ['Tomatoes', 'Pasta', 'Water']
+    },
+    {
+      id: "R8",
+      title: "Rodaballo",
+      image: {
+        src: "../../../../images/espaguetis.jpeg",
+        alt: "espaguetis"
+      },
+      ingredients: ['Tomatoes', 'Pasta', 'Water']
+    },
   ]
 
 export const fakeIngredients:Ingredient[] =

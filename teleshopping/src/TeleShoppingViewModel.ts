@@ -1,5 +1,7 @@
+import { watch } from "vue";
 import { RecipeState } from "./state/recipeState";
 import { WindowsState } from "./state/windowsState";
+import { TeleShoppingModel } from "./TeleShoppingModel";
 import { fakeIngredients, fakeRecipes } from "./tests/FakeData";
 
 
@@ -9,12 +11,18 @@ export function createTeleShoppingVm(
   windowsState: WindowsState
 ){
   const { 
-    recipes,
-    ingredients 
+    recipes, 
+    selectedRecipe,
+    recipeDetails
   } = recipeState
 
-  recipes.value = fakeRecipes;
-  ingredients.value = fakeIngredients;
+  const model = new TeleShoppingModel;
+
+  recipes.value = model.searchRecipes()
+  // watch(selectedRecipe.value, () => {
+  //   recipeDetails.value = model.searchRecipeDetails
+  // })
+  
   return {
 
   }

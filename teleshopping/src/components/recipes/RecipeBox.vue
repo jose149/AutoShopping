@@ -1,14 +1,11 @@
 <template>
-  <div class="recipe-box">
-    <div class="recipe-box__picture" ></div>
-    <h3 class="recipe-box__heading">{{recipe!.title}}</h3>
-    <router-link :to="'/recipes/' + recipeId ">View Details</router-link>
-  </div>
+  
 </template>
 
 <script lang="ts">
 import { Recipe } from '@/interfaces';
-import { defineComponent, PropType, ref } from 'vue';
+import { RecipeStateKey } from '@/state/state';
+import { defineComponent, inject, PropType } from 'vue';
 
 export default defineComponent({
   name: 'RecipeBox',
@@ -19,9 +16,17 @@ export default defineComponent({
     "recipe-selected"
   ],
   setup(props){
-    const recipeId = ref<string>(props.recipe!.id)
+    const {
+      selectedRecipe,
+      getRecipeById
+    } = inject(RecipeStateKey)!
+
+    function selectRecipe(recipeId:string){
+      selectedRecipe.value = getRecipeById(recipeId)
+    }
+
     return{
-      recipeId
+      selectRecipe
     }
   }
 });
@@ -31,18 +36,39 @@ export default defineComponent({
 <style scoped lang="scss">
   @import "@/style/Global.scss";
   .recipe-box{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    height: 300px;
+    width: 200px;
+    color: black;       
+    border-radius: 3px;
+    box-shadow: 0 0px 2rem rgba(0, 0, 0, 0.3);
+    transition: all 1s ease;
+    overflow: hidden;
+    background-color: transparent;
     &__picture{
+      height: 40%;
       width: 100%;
-      height: 100%;
+      background-size: cover;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+      background-image: linear-gradient(to right bottom, $color-black, $color-background-dark);
     }
     &__heading{
-      font-size: 30px;
+      position: absolute;
+      top: 18%;
+      font-size: 1rem;
+      right: 5%;
+      text-transform: uppercase;
+      color: white;
+      text-align: center;
+      padding: 1rem 1.5rem;
+      background-image: linear-gradient(to right bottom, $color-primary, $color-primary-2);
+    }
+    &__button{
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translate(-50%, 0);
+
     }
   }
   

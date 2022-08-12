@@ -1,46 +1,60 @@
 <template>
   <div class="section">
-    <h2 class="section__heading">Recipes</h2>
-    <div class="recipes-carrousel">
-      <RecipeBox
-        v-for="recipe in recipes"
-        :key="recipe.id"
-        :recipe="recipe"
+    <nav class="side-nav">
+      <SideNavigation
+      :items=recipesCategores
       />
+    </nav>
+    <div class="underlay">
+      <CardCarrousel
+        class="card-carrousel"
+        :cards="cards"
+        />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Ingredient, Recipe } from '@/interfaces';
-import { defineComponent, inject, ref } from 'vue';
-import RecipeBox from './RecipeBox.vue';
+import { computed, defineComponent, inject, ref } from 'vue';
+import SideNavigation from '@/components/utils/SideNavigation.vue'
+import CardCarrousel from '@/components/utils/CardCarrousel.vue'
 import { 
   RecipeStateKey,
   WindowsStateKey
 } from '@/state/state';
+import { PresentCard } from '@/interfaces';
 
 
 export default defineComponent({
   name: 'RecipesSection',
   components: {
-    // RecipeBox,
+    SideNavigation, CardCarrousel
   },
   setup(){
     const {
       recipes,
-      ingredients
+      recipesCategores,
     } = inject(RecipeStateKey)!
 
     const{
       isRecipeDetailsPanelOpened
     } = inject(WindowsStateKey)!
 
-    const selectedRecipe = ref<Recipe>()
-    const selectedIngredients = ref<Ingredient[]>([])  
+    const cards = computed<PresentCard[]>(() => {
+      return recipes.value.map((recipe) => {
+        return{
+          id: recipe.id,
+          title: recipe.title,
+          image: recipe.image,
+          features: recipe.ingredients
+        }
+      })
+    })
 
     return{
       recipes,
+      recipesCategores,
+      cards,
     }
   }
 });
@@ -51,22 +65,25 @@ export default defineComponent({
   @import "@/style/Global.scss";
   .section{
     height: 100%;
+    display: flex;
+  }
+  .underlay{
+    height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    &__heading{
-      font-size: $heading-2;
-    }
-  }
-  .recipes-carrousel{
-    height: 80vh;
-    width: 80%;
-    display: flex;
-    padding: 100px 50px;
-    box-sizing: border-box;
     background-color: $color-background-dark;
-    border: 3px solid yellow
+
+  }  
+  .card-carrousel{
+    height: 70%;
+    width: 100%;
+    background-color: $color-background-light;
   }
-  
+
+  .side-navigation{
+    height: 100%;
+    width: 20rem;
+  }
 </style>

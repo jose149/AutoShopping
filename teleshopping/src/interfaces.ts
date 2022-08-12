@@ -2,7 +2,14 @@ export interface Recipe {
   id: string,
   title: string,
   image: Image,
-  ingredientsId: string[]
+  ingredients: string[]
+}
+
+export interface PresentCard {
+  id: string,
+  title: string,
+  image: Image,
+  features: string[]
 }
 
 export interface Image {

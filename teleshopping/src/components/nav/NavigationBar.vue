@@ -40,15 +40,13 @@ export default defineComponent({
 <style scoped lang="scss">
   @import "@/style/Global.scss";
   .navigation-bar{
-    border-bottom: 3px solid $color-background-light;
+    border-bottom: 3px solid rgba($color-background-light,0.1);
     box-sizing: border-box;
     padding: 5px 50px;
     background-color: $color-background-dark;
-    height: 15vh;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    z-index: 1;
 
     &__logo{
       height: 100%;
@@ -61,11 +59,12 @@ export default defineComponent({
       list-style: none;
 
       &-link{
-        margin: 0 5px;
+        margin: 0 1rem;
         border-radius: 10px;
         padding: 10px 15px;
         text-decoration: none;
         text-transform: uppercase;
+        font-size: 1.6rem;
         color: $color-white;
         transition: 100ms;
         &:hover,

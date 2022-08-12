@@ -3,21 +3,37 @@ $color-black: #000000;
 $color-primary: #ba283d;
 $color-primary-2: #ae2539;
 $color-background-dark: #191e1c;
-$color-background-light: #c7e1dc;
+$color-background-light: #f4ecf0;
 
 $heading-2: 50px;
+
+$font-primary: 'Lato', serif;
+$font-secundary: 'Open Sans', sans-serif;
+
+$bp-largest: 75em;  // 1200px
+$bp-large: 62.5em;  // 1000px
+$bp-medium: 50em;   // 800px;
+$bp-small: 37.5em;  // 600px;
+$bp-smallest: 31.25em;  // 500px;
 
 *,*::before,*::after{
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
-html{
-  box-sizing: border-box;
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-  // @media only screen and (max-width: $bp-large){
-  //     font-size: 50%;
-  // }    
+body{
+  font-family: $font-primary;
+  font-weight: 400;
+  line-height: 1.6;
+  background-color: $color-background-light;
+}
+
+.section{
+  width: 100%;
+  transition: all 0.5s;
+  overflow: hidden;
+  &:not(.section:last-child){
+      min-height: 100vh;
+  }
 }

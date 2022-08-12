@@ -1,5 +1,5 @@
 <template>
-  <NavigationBar/>
+  <NavigationBar class="navigation-bar"/>
   <main class="content">
     <router-view></router-view>
   </main>
@@ -51,12 +51,21 @@ export default defineComponent({
 
 <style scoped lang="scss">
   @import "@/style/Global.scss";
+  .navigation-bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10rem;
+    z-index: 1;
+  }
   .content{
-    padding: 0 5%;
-    padding-bottom: 5%;
-    height: 85vh;
-    width: 100%;
+    position: absolute;
+    padding-top: 10rem;
     box-sizing: border-box;
+    top: 0rem;
+    left: 0;
+    height: 100vh;
+    width: 100%;
   }
   
 </style>
