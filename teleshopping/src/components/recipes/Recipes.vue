@@ -71,8 +71,7 @@ export default defineComponent({
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $color-background-dark;
-
+    background-color: $color-background-light;
   }  
   .card-carrousel{
     height: 70%;

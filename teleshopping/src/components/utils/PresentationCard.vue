@@ -12,7 +12,10 @@
       {{feature}}
       </li>
     </ul>
-    <button class="card__button">View Details</button>
+    <div class="card__cta">
+      <button class="card__button">View Details</button>
+    </div>
+    
   </div>
 </template>
 
@@ -50,12 +53,11 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background-color: transparent;
+    background-color: $color-background-light;
 
     &:hover{
       transform: scale(1.1);
       transform-origin: center;
-      filter: brightness(1.1);
       box-shadow: 2px 2px 10px rgba(0,0,0,.5);
     }
 
@@ -65,18 +67,22 @@ export default defineComponent({
       width: 100%;
       background-size: cover;
       clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-      background-image: linear-gradient(to right bottom, $color-black, $color-background-dark);
+      background-color: cadetblue;
+      // background-image: linear-gradient(to right bottom, $color-black, $color-background-dark);
     }
     &__heading{
       position: absolute;
       bottom: 28%;
-      font-size: 1.6rem;
       right: 5%;
+      height: 3.6rem;
+      font-size: 1.6rem;
+      border-radius: border-radius;
       text-transform: uppercase;
       color: white;
       text-align: center;
       padding: 1rem 1.5rem;
-      background-image: linear-gradient(to right bottom, $color-primary, $color-primary-2);
+      background-color: $color-background-dark;
+      // background-image: linear-gradient(to right bottom, $color-primary, $color-primary-2);
     }
     &__features{
       height: 40%;
@@ -94,17 +100,17 @@ export default defineComponent({
       display: inline-flex;
       justify-content: start;
     }
+    &__cta{
+      height: 20%;
+    }
     &__button{
       box-sizing: border-box;
-      height: 15%;
-      margin-bottom: 5%;
       border: none;
-      border-radius: 10rem;
-      padding: 1rem 3rem;
+      border-radius: $border-radius-button;
+      padding: 1rem 2rem;
       text-transform: uppercase;
       word-spacing: .5rem;
       cursor: pointer;
-      display: inline-block;
       transition: all .2s;
       -webkit-transition: all .2s;
       background-color: $color-primary;

@@ -60,7 +60,7 @@ export default defineComponent({
 
       &-link{
         margin: 0 1rem;
-        border-radius: 10px;
+        border-radius: $border-radius-title;
         padding: 10px 15px;
         text-decoration: none;
         text-transform: uppercase;

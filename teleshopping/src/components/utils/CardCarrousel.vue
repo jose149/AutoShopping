@@ -4,7 +4,13 @@
       class="card-carrousel__nav left"
       @click="moveCarrouselToLeft()"
     >
-      <img class="card-carrousel__side-icon" src="@/assets/icons/angle-left-solid.svg" alt="hola"/>
+      <svg 
+        class="card-carrousel__side-icon" 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 256 512"
+      >
+        <path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"/>
+      </svg>
     </button>
     <div class="card-carrousel__container">
       <div class="card-carrousel__wrapper">
@@ -20,7 +26,14 @@
       class="card-carrousel__nav right"
       @click="moveCarrouselToRight()"
     >
-      <img class="card-carrousel__side-icon" src="@/assets/icons/angle-right-solid.svg" alt="hola"/>
+      <svg 
+        class="card-carrousel__side-icon"
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 256 512"
+      >
+        <path d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"
+      />
+      </svg>
     </button>
   </div>
 </template>
@@ -74,7 +87,7 @@ export default defineComponent({
       top: 0%;
       height: 100%;
       width: 7rem;
-      background-color: rgba($color-background-dark, 0.1);
+      background-image: linear-gradient(90deg, rgba($color-background-dark, 0.1), rgba($color-background-light, 0.1));
       border: none;
       display: flex;
       justify-content: center;
@@ -97,7 +110,7 @@ export default defineComponent({
     }
     &__side-icon{
       height: 3rem;
-      width: 3rem;
+      fill: $color-background-dark;
     }
     &__container{
       position: relative;
