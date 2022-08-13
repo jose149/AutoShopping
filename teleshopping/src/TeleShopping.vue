@@ -1,8 +1,6 @@
 <template>
   <NavigationBar class="navigation-bar"/>
-  <main class="content">
-    <router-view></router-view>
-  </main>
+  <router-view class="content"></router-view>
 </template>
 
 <script lang="ts">
