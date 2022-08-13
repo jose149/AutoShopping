@@ -1,5 +1,5 @@
 <template>
-  <div class="side-navigation">
+  <div class="side-navigation closed">
     <ul class="side-navigation__content">
       <button 
         v-for="item, index in items"
@@ -8,7 +8,8 @@
       </button>
     </ul>
     <div class="side-navigation__hide-container">
-      <button class="side-navigation__button">
+      <button class="side-navigation__button"
+      @click="toogleSideNavigation()">
         <img src="@/assets/icons/angle-left-solid.svg" alt="hola">
       </button>
     </div>
@@ -17,7 +18,7 @@
 
 <script lang="ts">
 import { RecipesCategories } from '@/state/recipeState';
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, onMounted, PropType, ref } from 'vue';
 
 
 
@@ -29,7 +30,28 @@ export default defineComponent({
   components: {
   },
   setup(){
+    const isSideNavigationOpened = ref<boolean>(false)
+    const sideNavigationElement = ref<Element | null>(null)
+    onMounted(() => {
+      sideNavigationElement.value = document.querySelector(".side-navigation")
+    })
+
+    function toogleSideNavigation(){
+      if(isSideNavigationOpened.value){
+        sideNavigationElement.value?.classList.remove("opened")
+        sideNavigationElement.value?.classList.add("closed")
+        isSideNavigationOpened.value = false;
+      }else{
+        sideNavigationElement.value?.classList.remove("closed")
+        sideNavigationElement.value?.classList.add("opened")
+        isSideNavigationOpened.value = true;
+      }
+      console.log(isSideNavigationOpened.value)
+      return
+    }
+    
     return{
+      toogleSideNavigation
     }
   }
 });
@@ -41,7 +63,9 @@ export default defineComponent({
   .side-navigation{
     position: relative;
     overflow: visible;
-    
+    height: 100%;
+    transition: width 0.25s;
+
     &__content{
       position: absolute;
       top: 0;
@@ -57,6 +81,7 @@ export default defineComponent({
       justify-content: space-evenly;
       background-color: $color-primary;
       z-index: 1;
+      overflow: hidden;
     }
     &__item{
       padding: 1.5rem 1rem;
@@ -96,4 +121,18 @@ export default defineComponent({
       }
     }
   }  
+  .opened{
+    width: 20rem;
+    img{
+      transition: all 0.5s;
+      transform: rotate(0deg);
+    }
+  }
+  .closed{
+    width: 0rem;
+    img{
+      transition: all 0.5s;
+      transform: rotate(180deg);
+    }
+  }
 </style>

@@ -1,10 +1,8 @@
 <template>
   <div class="section">
-    <nav class="side-nav">
-      <SideNavigation
-      :items=recipesCategores
-      />
-    </nav>
+    <SideNavigation
+    :items=recipesCategores
+    />
     <div class="underlay">
       <CardCarrousel
         class="card-carrousel"
@@ -82,8 +80,4 @@ export default defineComponent({
     background-color: $color-background-light;
   }
 
-  .side-navigation{
-    height: 100%;
-    width: 20rem;
-  }
 </style>
