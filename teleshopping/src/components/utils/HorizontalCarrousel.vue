@@ -1,38 +1,32 @@
 <template>
-  <div class="card-carrousel">
+  <div class="horizontal-carrousel">
     <button 
-      class="card-carrousel__nav left"
+      class="horizontal-carrousel__nav left"
       @click="moveCarrouselToLeft()"
     >
       <svg 
-        class="card-carrousel__side-icon" 
+        class="horizontal-carrousel__side-icon" 
         xmlns="http://www.w3.org/2000/svg" 
         viewBox="0 0 256 512"
       >
         <path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"/>
       </svg>
     </button>
-    <div class="card-carrousel__container">
-      <div class="card-carrousel__wrapper">
-        <PresentationCard
-        v-for="card in cards"
-        :key="card.id"
-        :card="card"
-        class="card-carrousel__card"
-      />
+    <div class="horizontal-carrousel__container">
+      <div class="horizontal-carrousel__wrapper">
+        <slot></slot>
       </div>
     </div>
     <button 
-      class="card-carrousel__nav right"
+      class="horizontal-carrousel__nav right"
       @click="moveCarrouselToRight()"
     >
       <svg 
-        class="card-carrousel__side-icon"
+        class="horizontal-carrousel__side-icon" 
         xmlns="http://www.w3.org/2000/svg" 
         viewBox="0 0 256 512"
       >
-        <path d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"
-      />
+        <path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"/>
       </svg>
     </button>
   </div>
@@ -41,20 +35,19 @@
 <script lang="ts">
 import { Recipe } from '@/interfaces';
 import { defineComponent, PropType } from 'vue';
-import PresentationCard from '@/components/utils/PresentationCard.vue'
+
 
 export default defineComponent({
-  name: 'CardCarrousel',
+  name: 'HorizontalCarrousel',
   props: {
     cards: { type: Array as PropType<Recipe[]> },
   }, 
   components: {
-    PresentationCard,
   },
   setup(){
 
     // TODO implement those functions as scroll
-    var scroller = document.getElementsByClassName("card-carrousel__container")
+    var scroller = document.getElementsByClassName("horizontal-carrousel__container")
     function moveCarrouselToLeft(){
       console.log(scroller[0].scrollLeft = scroller[0].scrollLeft - 800)
     }
@@ -73,7 +66,7 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import "@/style/Global.scss";
-  .card-carrousel{
+  .horizontal-carrousel{
     position: relative;
     height: 100%;
     width: 100%;
@@ -87,7 +80,7 @@ export default defineComponent({
       top: 0%;
       height: 100%;
       width: 7rem;
-      background-image: linear-gradient(90deg, rgba($color-background-dark, 0.1), rgba($color-background-light, 0.1));
+      background: linear-gradient(90deg, rgba($color-background-dark, 0.1), rgba($color-background-light, 0.1));
       border: none;
       display: flex;
       justify-content: center;
@@ -105,6 +98,7 @@ export default defineComponent({
         left: 0%;
       }
       &.right{
+        transform: rotate(180deg);
         right: 0%;
       }
     }
@@ -129,10 +123,6 @@ export default defineComponent({
       display: flex;
       justify-content: start;
       align-items: center;
-    }
-    &__card{
-      margin: 0 2rem;
-      display: inline-flex;
     }
   }
   
