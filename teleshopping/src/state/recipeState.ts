@@ -12,7 +12,7 @@ export function setUpRecipeState(){
   const selectedRecipe = ref<Recipe>()
   const recipesCategores = ref<RecipesCategories>(
     [
-      "Pastas", "Carnes", "Pescados", "Hamburguesas"
+      "Starters and appetizers", "Salads", "Vegetables and legumes", "Creams and soaps", "Rice and pasta", "Fish and seafood", "Meats", "Desserts"
     ]
   )
 

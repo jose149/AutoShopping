@@ -2,9 +2,10 @@
   <div class="section">
     <div class="recipes-menu">
       <ul class="recipes-menu__categories-list">
-        <li v-for="category in recipesCategores"
+        <button v-for="category in recipesCategores"
         :key="category" 
-        class="recipes-menu__category">{{category}}</li>
+        class="recipes-menu__category">{{category}}
+        </button>
       </ul>
     </div>
     <HorizontalCarrousel
@@ -81,20 +82,32 @@ export default defineComponent({
     background-color: antiquewhite;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+
     &__categories-list{
-      height: 80%;
-      width: 80%;
+      width: 100%;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      align-items: flex-end;
       list-style: none;
     }
+
     &__category{
+      width: calc(100%/8);
+      height: 10rem;
       color: black;
       font-size: 2rem;
       font-family: $font-primary;
-      margin-right: 2rem;
+      font-weight: 600;
+      background-color: grey;
+      border: none;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      box-shadow: 4px -3px 10px black;
+      cursor: pointer;
+
+      &:first-child{
+        background-color: $color-background-light;
+      }
     }
   }  
   .horizontal-carrousel{

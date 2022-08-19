@@ -73,7 +73,7 @@ export default defineComponent({
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    box-shadow: 0 0px 2rem rgba(0, 0, 0, 0.3);
+    // box-shadow: 0 0px 2rem rgba(0, 0, 0, 0.3);
 
     &__nav{
       position: absolute;
