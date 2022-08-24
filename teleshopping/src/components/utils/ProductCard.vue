@@ -20,13 +20,13 @@
 </template>
 
 <script lang="ts">
-import { PresentCard } from '@/interfaces';
+import { ProductCardInterface } from '@/interfaces';
 import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
-  name: 'PresentationCard',
+  name: 'ProductCard',
   props: {
-    card: { type: Object as PropType<PresentCard> },
+    card: { type: Object as PropType<ProductCardInterface> },
   }, 
   components: {
   },
@@ -68,7 +68,6 @@ export default defineComponent({
       background-size: cover;
       clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
       background-color: cadetblue;
-      // background-image: linear-gradient(to right bottom, $color-black, $color-background-dark);
     }
     &__heading{
       position: absolute;

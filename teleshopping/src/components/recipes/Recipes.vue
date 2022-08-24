@@ -1,42 +1,42 @@
 <template>
   <div class="section">
-    <div class="recipes-menu">
-      <ul class="recipes-menu__categories-list">
-        <button v-for="category in recipesCategores"
+    <nav class="categories-navbar">
+      <ul class="categories-navbar__list">
+        <button v-for="category in recipesCategories"
         :key="category" 
-        class="recipes-menu__category">{{category}}
+        class="categories-navbar__category">{{category}}
         </button>
       </ul>
-    </div>
-    <HorizontalCarrousel
-        class="horizontal-carrousel"
+    </nav>
+    <SlidingCarrousel
+        class="recipes-carrousel"
         :cards="cards"
       >
-        <PresentationCard
+        <ProductCard
           v-for="card in cards"
-          :key="card.id"
+          :key="card"
           :card="card"
-          class="presentation-card"
+          class="recipe-card"
         />
-    </HorizontalCarrousel>
+    </SlidingCarrousel>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, ref } from 'vue';
-import HorizontalCarrousel from '@/components/utils/HorizontalCarrousel.vue'
+import { computed, defineComponent, inject, onMounted, ref } from 'vue';
+import SlidingCarrousel from '@/components/utils/SlidingCarrousel.vue'
 import { 
   RecipeStateKey,
   WindowsStateKey
 } from '@/state/state';
-import { PresentCard } from '@/interfaces';
-import PresentationCard from '@/components/utils/PresentationCard.vue'
-
+import { ProductCardInterface, recipeCategory } from '@/interfaces';
+import ProductCard from '@/components/utils/ProductCard.vue'
+import { propsToAttrMap } from '@vue/shared';
 
 export default defineComponent({
   name: 'RecipesSection',
   components: {
-    HorizontalCarrousel, PresentationCard,
+    SlidingCarrousel, ProductCard,
   },
   setup(){
     const {
@@ -44,14 +44,12 @@ export default defineComponent({
       recipesCategores,
     } = inject(RecipeStateKey)!
 
-    const{
-      isRecipeDetailsPanelOpened
-    } = inject(WindowsStateKey)!
+    const recipesCategories = recipes.value.map((recipe) => recipe.category)
+    
 
-    const cards = computed<PresentCard[]>(() => {
+    const cards = computed<ProductCardInterface[]>(() => {
       return recipes.value.map((recipe) => {
         return{
-          id: recipe.id,
           title: recipe.title,
           image: recipe.image,
           features: recipe.ingredients
@@ -59,9 +57,18 @@ export default defineComponent({
       })
     })
 
+    onMounted(() => {
+      const categoriesHTML = document.querySelectorAll('.categories-navbar__category')
+      const categoriesNumber = categoriesHTML.length
+      for (let category in categoriesHTML){
+        (categoriesHTML[category] as HTMLElement).style.width = `calc(100%/${categoriesNumber}`
+      }
+    })
+
     return{
       recipes,
       recipesCategores,
+      recipesCategories,
       cards,
     }
   }
@@ -75,48 +82,55 @@ export default defineComponent({
     height: 100%;
     display: flex;
     flex-direction: column;
-  }
-  .recipes-menu{
-    width: 100%;
-    height: 30%;
-    background-color: antiquewhite;
-    display: flex;
     justify-content: center;
-    align-items: flex-end;
+    background-color: antiquewhite;
+  }
 
-    &__categories-list{
+
+  .categories-navbar{
+    width: 100%;
+    background-color: antiquewhite;
+
+    &__list{
       width: 100%;
-      display: flex;
-      align-items: flex-end;
       list-style: none;
+      display: flex;      
     }
 
     &__category{
-      width: calc(100%/8);
+      width: calc(100%/9);
+      border: none;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border-bottom: 10px solid $color-primary;
+      box-sizing: border-box;
       height: 10rem;
       color: black;
       font-size: 2rem;
       font-family: $font-primary;
       font-weight: 600;
-      background-color: grey;
-      border: none;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      box-shadow: 4px -3px 10px black;
+      background-color: $color-background-light;
+      box-shadow: 0px -2px 2px rgba(black, 0.5);
       cursor: pointer;
 
+      &:hover{
+        background-color: darkgrey;
+      }
+
       &:first-child{
-        background-color: $color-background-light;
+        background-color: $color-primary;
       }
     }
-  }  
-  .horizontal-carrousel{
+  } 
+
+  .recipes-carrousel{
     height: 70%;
     width: 100%;
+    box-shadow: 0 15px 15px rgba(black,0.2);
     background-color: $color-background-light;
   }
-  .presentation-card{
+
+  .recipe-card{
     margin-right: 2rem;
   }
-
 </style>

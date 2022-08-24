@@ -1,130 +1,86 @@
-import { Ingredient, Recipe, UnitEnumerator } from "@/interfaces";
+import { Ingredient, Recipe, recipeCategory, UnitEnumerator } from "@/interfaces";
 
 export const fakeRecipes:Recipe[] =
   [
     {
-      id: "R1",
+      id: 1,
       title: "Spagetthis",
       image: {
         src: "../../../../images/espaguetis.jpeg",
         alt: "espaguetis"
       },
-      ingredients: ['Tomatoes', 'Pasta', 'Water']
+      ingredients: ['Tomatoes', 'Pasta', 'Water'],
+      category: recipeCategory.RiceAndPasta
     },
     {
-      id: "R2",
+      id: 2,
       title: "Pizza",
       image: {
         src: "pizza.jpg",
         alt: "pizza"
       },
-      ingredients: ['Tomatoes', 'Water', 'Flour', 'Cheese', 'Jam']
+      ingredients: ['Tomatoes', 'Water', 'Flour', 'Cheese', 'Jam'],
+      category: recipeCategory.RiceAndPasta
     },
     {
-      id: "R3",
+      id: 3,
       title: "Piña",
       image: {
         src: "../../../../images/espaguetis.jpeg",
         alt: "espaguetis"
       },
-      ingredients: ['Tomatoes', 'Pasta', 'Water']
+      ingredients: ['Tomatoes', 'Pasta', 'Water'],
+      category: recipeCategory.Desserts
     },
     {
-      id: "R4",
+      id: 4,
       title: "Arroz",
       image: {
         src: "../../../../images/espaguetis.jpeg",
         alt: "espaguetis"
       },
-      ingredients: ['Tomatoes', 'Pasta', 'Water']
+      ingredients: ['Tomatoes', 'Pasta', 'Water'],
+      category: recipeCategory.RiceAndPasta
     },
     {
-      id: "R5",
+      id: 5,
       title: "Rabiolis",
       image: {
         src: "../../../../images/espaguetis.jpeg",
         alt: "espaguetis"
       },
-      ingredients: ['Tomatoes', 'Pasta', 'Water']
+      ingredients: ['Tomatoes', 'Pasta', 'Water'],
+      category: recipeCategory.RiceAndPasta
     },
     {
-      id: "R6",
-      title: "Parmessana",
+      id: 6,
+      title: "Pizza Parmessana",
       image: {
         src: "../../../../images/espaguetis.jpeg",
         alt: "espaguetis"
       },
-      ingredients: ['Tomatoes', 'Pasta', 'Water']
+      ingredients: ['Tomatoes', 'Pasta', 'Water'],
+      category: recipeCategory.RiceAndPasta
     },
     {
-      id: "R7",
-      title: "Cahmpu",
+      id: 7,
+      title: "Burguer CBO",
       image: {
         src: "../../../../images/espaguetis.jpeg",
         alt: "espaguetis"
       },
-      ingredients: ['Tomatoes', 'Pasta', 'Water']
+      ingredients: ['Tomatoes', 'Pasta', 'Water'],
+      category: recipeCategory.Meats
     },
     {
-      id: "R8",
+      id: 8,
       title: "Rodaballo",
       image: {
         src: "../../../../images/espaguetis.jpeg",
         alt: "espaguetis"
       },
-      ingredients: ['Tomatoes', 'Pasta', 'Water']
+      ingredients: ['Tomatoes', 'Pasta', 'Water'],
+      category: recipeCategory.FishAndSeafood
     },
   ]
-
-export const fakeIngredients:Ingredient[] =
-[
-  {
-    id: "I0",
-    name: "tomatoes",
-    amount: {
-      value: 200,
-      unit: UnitEnumerator.weight
-    }
-  },
-  {
-    id: "I1",
-    name: "pasta",
-    amount: {
-      value: 500,
-      unit: UnitEnumerator.weight
-    }
-  },
-  {
-    id: "I2",
-    name: "water",
-    amount: {
-      value: 500,
-      unit: UnitEnumerator.volume
-    }
-  },
-  {
-    id: "I3",
-    name: "flour",
-    amount: {
-      value: 500,
-      unit: UnitEnumerator.weight
-    }
-  },
-  {
-    id: "I4",
-    name: "cheese",
-    amount: {
-      value: 200,
-      unit: UnitEnumerator.weight
-    }
-  },
-  {
-    id: "I5",
-    name: "jam",
-    amount: {
-      value: 200,
-      unit: UnitEnumerator.weight
-    }
-  }
-]
  

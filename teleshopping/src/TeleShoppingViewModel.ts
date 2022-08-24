@@ -2,7 +2,7 @@ import { watch } from "vue";
 import { RecipeState } from "./state/recipeState";
 import { WindowsState } from "./state/windowsState";
 import { TeleShoppingModel } from "./TeleShoppingModel";
-import { fakeIngredients, fakeRecipes } from "./tests/FakeData";
+import { fakeRecipes } from "./tests/FakeData";
 
 
 

@@ -12,7 +12,7 @@ export function setUpRecipeState(){
   const selectedRecipe = ref<Recipe>()
   const recipesCategores = ref<RecipesCategories>(
     [
-      "Starters and appetizers", "Salads", "Vegetables and legumes", "Creams and soaps", "Rice and pasta", "Fish and seafood", "Meats", "Desserts"
+      "All", "Starters and appetizers", "Salads", "Vegetables and legumes", "Creams and soaps", "Rice and pasta", "Fish and seafood", "Meats", "Desserts"
     ]
   )
 
@@ -20,7 +20,7 @@ export function setUpRecipeState(){
     if (!recipes.value){
       return
     }
-    return recipes.value.find((recipe) => recipe.id === recipeId)
+    // return recipes.value.find((recipe) => recipe.id === recipeId)
   }
 
   const result = {

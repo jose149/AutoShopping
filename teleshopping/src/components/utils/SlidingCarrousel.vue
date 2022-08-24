@@ -38,15 +38,13 @@ import { defineComponent, PropType } from 'vue';
 
 
 export default defineComponent({
-  name: 'HorizontalCarrousel',
+  name: 'SlidingCarrousel',
   props: {
     cards: { type: Array as PropType<Recipe[]> },
   }, 
   components: {
   },
   setup(){
-
-    // TODO implement those functions as scroll
     var scroller = document.getElementsByClassName("horizontal-carrousel__container")
     function moveCarrouselToLeft(){
       console.log(scroller[0].scrollLeft = scroller[0].scrollLeft - 800)

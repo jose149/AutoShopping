@@ -1,12 +1,23 @@
-export interface Recipe {
-  id: string,
-  title: string,
-  image: Image,
-  ingredients: string[]
+export enum recipeCategory {
+  StartersAndApetizers = "Starters and appetizers", 
+  Salads = "Salads",
+  VegetablesAndLegums= "Vegetables and legumes",
+  CreamAndSoaps = "Creams and soaps",
+  RiceAndPasta = "Rice and pasta",
+  FishAndSeafood = "Fish and seafood",
+  Meats = "Meats",
+  Desserts = "Desserts"
 }
 
-export interface PresentCard {
-  id: string,
+export interface Recipe {
+  id: number,
+  title: string,
+  image: Image,
+  ingredients: string[],
+  category: recipeCategory
+}
+
+export interface ProductCardInterface {
   title: string,
   image: Image,
   features: string[]

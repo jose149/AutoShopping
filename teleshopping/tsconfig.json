@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    // "target": "esnext",
+    "target": "es6",
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
