@@ -1,4 +1,5 @@
-export enum recipeCategory {
+export enum RecipeCategory {
+  All = "All",
   StartersAndApetizers = "Starters and appetizers", 
   Salads = "Salads",
   VegetablesAndLegums= "Vegetables and legumes",
@@ -14,7 +15,7 @@ export interface Recipe {
   title: string,
   image: Image,
   ingredients: string[],
-  category: recipeCategory
+  category: RecipeCategory
 }
 
 export interface ProductCardInterface {

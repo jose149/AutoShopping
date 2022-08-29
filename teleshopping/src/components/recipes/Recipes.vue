@@ -1,75 +1,93 @@
 <template>
   <div class="section">
     <nav class="categories-navbar">
-      <ul class="categories-navbar__list">
-        <button v-for="category in recipesCategories"
-        :key="category" 
-        class="categories-navbar__category">{{category}}
-        </button>
-      </ul>
+      <button v-for="category in recipesCategories"
+      :key="category" 
+      class="categories-navbar__category"
+      :class="{
+        selected: category === selectedCategory
+      }"
+      @click="selectRecipesByCategory(category)">{{category}}
+      </button>
     </nav>
-    <SlidingCarrousel
-        class="recipes-carrousel"
-        :cards="cards"
-      >
-        <ProductCard
-          v-for="card in cards"
-          :key="card"
-          :card="card"
-          class="recipe-card"
-        />
+    <SlidingCarrousel class="recipes-carrousel">
+      <ProductCard
+        v-for="recipe in recipesByCategory"
+        :key="recipe"
+        :card="recipe"
+        class="recipe-card"
+      />
     </SlidingCarrousel>
+    <footer class="button-container">
+      <button class="add-button button">+ Recipe</button>
+    </footer>
+    <ModalTemplate>
+      <template v-slot:modal-title>
+        <h3 class="modal-title">Add recipe</h3>
+      </template>
+      <template v-slot:modal-content>
+        <div class="modal-content"></div>
+      </template>
+      <template v-slot:modal-footer>
+        <div class="modal-footer"></div>
+      </template>
+    </ModalTemplate>
   </div>
+  
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, onMounted, ref } from 'vue';
+import { defineComponent, inject, onMounted, ref } from 'vue';
 import SlidingCarrousel from '@/components/utils/SlidingCarrousel.vue'
 import { 
   RecipeStateKey,
-  WindowsStateKey
 } from '@/state/state';
-import { ProductCardInterface, recipeCategory } from '@/interfaces';
+import { Recipe, RecipeCategory } from '@/interfaces';
 import ProductCard from '@/components/utils/ProductCard.vue'
-import { propsToAttrMap } from '@vue/shared';
+import ModalTemplate from '@/components/utils/ModalTemplate.vue'
+
+
 
 export default defineComponent({
   name: 'RecipesSection',
   components: {
-    SlidingCarrousel, ProductCard,
+    SlidingCarrousel, ProductCard, ModalTemplate,
   },
+
   setup(){
+    // State injections
     const {
       recipes,
-      recipesCategores,
     } = inject(RecipeStateKey)!
 
-    const recipesCategories = recipes.value.map((recipe) => recipe.category)
-    
-
-    const cards = computed<ProductCardInterface[]>(() => {
-      return recipes.value.map((recipe) => {
-        return{
-          title: recipe.title,
-          image: recipe.image,
-          features: recipe.ingredients
-        }
-      })
-    })
+    // Carrousel navigator logic
+    const recipesCategories = ref<RecipeCategory[]>(
+      Object.values(RecipeCategory)
+    )
+    const recipesByCategory = ref<Recipe[]>(recipes.value)
+    const selectedCategory = ref<RecipeCategory>(RecipeCategory.All)
+    function selectRecipesByCategory(category:RecipeCategory) {
+      selectedCategory.value = category;
+      if (category === RecipeCategory.All){
+        recipesByCategory.value = recipes.value;
+        return
+      }
+      recipesByCategory.value = recipes.value.filter((recipe) => recipe.category === category) 
+    }
 
     onMounted(() => {
       const categoriesHTML = document.querySelectorAll('.categories-navbar__category')
       const categoriesNumber = categoriesHTML.length
-      for (let category in categoriesHTML){
-        (categoriesHTML[category] as HTMLElement).style.width = `calc(100%/${categoriesNumber}`
+      for (let i=0; i<categoriesNumber; i++){
+        (categoriesHTML[i] as HTMLElement).style.width = `calc(100%/${categoriesNumber}`
       }
     })
 
     return{
-      recipes,
-      recipesCategores,
       recipesCategories,
-      cards,
+      recipesByCategory,
+      selectedCategory,
+      selectRecipesByCategory
     }
   }
 });
@@ -78,59 +96,15 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import "@/style/Global.scss";
-  .section{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: antiquewhite;
+  @import "@/style/Recipes/Recipes.scss";
+  .modal-title{
+    font-size: $font-size-h3;
+    font-weight: $font-weight-h3;
   }
-
-
-  .categories-navbar{
-    width: 100%;
-    background-color: antiquewhite;
-
-    &__list{
-      width: 100%;
-      list-style: none;
-      display: flex;      
-    }
-
-    &__category{
-      width: calc(100%/9);
-      border: none;
-      border-top-left-radius: 3px;
-      border-top-right-radius: 3px;
-      border-bottom: 10px solid $color-primary;
-      box-sizing: border-box;
-      height: 10rem;
-      color: black;
-      font-size: 2rem;
-      font-family: $font-primary;
-      font-weight: 600;
-      background-color: $color-background-light;
-      box-shadow: 0px -2px 2px rgba(black, 0.5);
-      cursor: pointer;
-
-      &:hover{
-        background-color: darkgrey;
-      }
-
-      &:first-child{
-        background-color: $color-primary;
-      }
-    }
-  } 
-
-  .recipes-carrousel{
-    height: 70%;
-    width: 100%;
-    box-shadow: 0 15px 15px rgba(black,0.2);
-    background-color: $color-background-light;
+  .modal-content{
+    
   }
+  .modal-footer{
 
-  .recipe-card{
-    margin-right: 2rem;
   }
 </style>

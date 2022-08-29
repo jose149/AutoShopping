@@ -1,0 +1,66 @@
+.horizontal-carrousel{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+
+  &__nav-button{
+    position: absolute;
+    top: 0%;
+    height: 100%;
+    width: 7rem;
+    background: linear-gradient(90deg, rgba($color-background-dark, 0.1), rgba($color-background-light, 0.1));
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    cursor: pointer;
+    transition: all .25s;
+
+    &:hover{
+      background-color: rgba($color-background-dark, 0.3);
+    }
+
+    &:active{
+      background-color: rgba($color-background-dark, 0.2);
+    }
+
+    &.left{
+      left: 0%;
+    }
+    
+    &.right{
+      transform: rotate(180deg);
+      right: 0%;
+    }
+  }
+
+  &__side-icon{
+    height: 3rem;
+    fill: $color-background-dark;
+  }
+
+  &__container{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    display: block;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    
+  }
+
+  &__wrapper{
+    position: absolute;
+    padding: 10rem 10rem;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+}

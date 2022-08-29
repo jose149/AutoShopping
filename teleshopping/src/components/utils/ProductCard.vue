@@ -41,8 +41,8 @@ export default defineComponent({
 <style scoped lang="scss">
   @import "@/style/Global.scss";
   .card{
-    height: 35rem;
-    width: 25rem;
+    height: 100%;
+    aspect-ratio: 1 / 1.33;
     color: black;       
     border-radius: 3px;
     box-shadow: 0 0px 2rem rgba(0, 0, 0, 0.3);
@@ -73,13 +73,12 @@ export default defineComponent({
       position: absolute;
       bottom: 28%;
       right: 5%;
-      height: 3.6rem;
-      font-size: 1.6rem;
-      border-radius: border-radius;
+      font-size: $font-size-h3;
+      border-radius: $border-radius-h3;
       text-transform: uppercase;
       color: white;
       text-align: center;
-      padding: 1rem 1.5rem;
+      padding: $padding-h3;
       background-color: $color-background-dark;
       // background-image: linear-gradient(to right bottom, $color-primary, $color-primary-2);
     }
@@ -93,7 +92,7 @@ export default defineComponent({
     }
     &__feature{
       width: 50%;
-      font-size: 1.6rem;
+      font-size: $font-size-h3;
       padding: 5px 0;
       padding-left: 15%;
       display: inline-flex;
@@ -106,7 +105,7 @@ export default defineComponent({
       box-sizing: border-box;
       border: none;
       border-radius: $border-radius-button;
-      padding: 1rem 2rem;
+      padding: $padding-button;
       text-transform: uppercase;
       word-spacing: .5rem;
       cursor: pointer;
@@ -114,8 +113,8 @@ export default defineComponent({
       -webkit-transition: all .2s;
       background-color: $color-primary;
       color: $color-white;
-      font-size: 1.6rem;
-      font-weight: 700;
+      font-size: $font-size-button;
+      font-weight: $font-weight-button;
       text-shadow: 0px 0px 5px rgba(0,0,0,.4);
       box-shadow: 2px 2px 5px rgba(0,0,0,.5);
       &:hover{
@@ -127,8 +126,6 @@ export default defineComponent({
         transform: translateY(0px);
         box-shadow: 1px 1px 5px rgba(0,0,0,.5);
       } 
-
-      
     }
   }
   

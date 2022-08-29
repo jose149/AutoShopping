@@ -50,19 +50,10 @@ export default defineComponent({
 <style scoped lang="scss">
   @import "@/style/Global.scss";
   .navigation-bar{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 10rem;
-    z-index: 1;
+    height: 10vh;
   }
   .content{
-    position: absolute;
-    padding-top: 10rem;
-    box-sizing: border-box;
-    top: 0rem;
-    left: 0;
-    height: 100vh;
+    height: 90vh;
     width: 100%;
   }
   

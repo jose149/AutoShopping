@@ -5,10 +5,6 @@ $color-primary-2: #ae2539;
 $color-background-dark: #191e1c;
 $color-background-light: #f4ecf0;
 
-$heading-2: 50px;
-$border-radius-title: 3px;
-$border-radius-button: 10rem;
-
 $font-primary: 'Lato', serif;
 $font-secundary: 'Open Sans', sans-serif;
 
@@ -17,6 +13,21 @@ $bp-large: 62.5em;  // 1000px
 $bp-medium: 50em;   // 800px;
 $bp-small: 37.5em;  // 600px;
 $bp-smallest: 31.25em;  // 500px;
+
+$heading-2: 50px;
+
+$border-radius-h3: 0.3rem;
+$padding-h3: 1rem 2rem;
+$font-size-h3: 2rem;
+$font-weight-h3: 700;
+
+$border-radius-button: 5rem;
+$padding-button: 1rem 2rem;
+$font-size-button: 2rem;
+$font-weight-button: 700;
+
+$border-radius-modal: 1rem;
+$padding-modal: 1rem 2rem;
 
 *,*::before,*::after{
   margin: 0;

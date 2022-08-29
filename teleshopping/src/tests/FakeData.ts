@@ -1,4 +1,4 @@
-import { Ingredient, Recipe, recipeCategory, UnitEnumerator } from "@/interfaces";
+import { Ingredient, Recipe, RecipeCategory, UnitEnumerator } from "@/interfaces";
 
 export const fakeRecipes:Recipe[] =
   [
@@ -10,7 +10,7 @@ export const fakeRecipes:Recipe[] =
         alt: "espaguetis"
       },
       ingredients: ['Tomatoes', 'Pasta', 'Water'],
-      category: recipeCategory.RiceAndPasta
+      category: RecipeCategory.RiceAndPasta
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ export const fakeRecipes:Recipe[] =
         alt: "pizza"
       },
       ingredients: ['Tomatoes', 'Water', 'Flour', 'Cheese', 'Jam'],
-      category: recipeCategory.RiceAndPasta
+      category: RecipeCategory.RiceAndPasta
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ export const fakeRecipes:Recipe[] =
         alt: "espaguetis"
       },
       ingredients: ['Tomatoes', 'Pasta', 'Water'],
-      category: recipeCategory.Desserts
+      category: RecipeCategory.Desserts
     },
     {
       id: 4,
@@ -40,7 +40,7 @@ export const fakeRecipes:Recipe[] =
         alt: "espaguetis"
       },
       ingredients: ['Tomatoes', 'Pasta', 'Water'],
-      category: recipeCategory.RiceAndPasta
+      category: RecipeCategory.RiceAndPasta
     },
     {
       id: 5,
@@ -50,17 +50,17 @@ export const fakeRecipes:Recipe[] =
         alt: "espaguetis"
       },
       ingredients: ['Tomatoes', 'Pasta', 'Water'],
-      category: recipeCategory.RiceAndPasta
+      category: RecipeCategory.RiceAndPasta
     },
     {
       id: 6,
-      title: "Pizza Parmessana",
+      title: "Parmessana",
       image: {
         src: "../../../../images/espaguetis.jpeg",
         alt: "espaguetis"
       },
       ingredients: ['Tomatoes', 'Pasta', 'Water'],
-      category: recipeCategory.RiceAndPasta
+      category: RecipeCategory.RiceAndPasta
     },
     {
       id: 7,
@@ -70,7 +70,7 @@ export const fakeRecipes:Recipe[] =
         alt: "espaguetis"
       },
       ingredients: ['Tomatoes', 'Pasta', 'Water'],
-      category: recipeCategory.Meats
+      category: RecipeCategory.Meats
     },
     {
       id: 8,
@@ -80,7 +80,7 @@ export const fakeRecipes:Recipe[] =
         alt: "espaguetis"
       },
       ingredients: ['Tomatoes', 'Pasta', 'Water'],
-      category: recipeCategory.FishAndSeafood
+      category: RecipeCategory.FishAndSeafood
     },
   ]
  
