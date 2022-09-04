@@ -2,7 +2,7 @@
   <div class="side-navigation closed">
     <ul class="side-navigation__content">
       <button 
-        v-for="item, index in items"
+        v-for="item, index in [1,2,3]"
         :key="index"
         class="side-navigation__item">{{item}} 
       </button>
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { RecipesCategories } from '@/state/recipeState';
+// import { RecipesCategories } from '@/state/recipeState';
 import { defineComponent, onMounted, PropType, ref } from 'vue';
 
 
@@ -25,7 +25,6 @@ import { defineComponent, onMounted, PropType, ref } from 'vue';
 export default defineComponent({
   name: 'SideNavigation',
   props: {
-    items: { type: Array as PropType<RecipesCategories> },
   }, 
   components: {
   },

@@ -13,25 +13,17 @@
     <SlidingCarrousel class="recipes-carrousel">
       <ProductCard
         v-for="recipe in recipesByCategory"
-        :key="recipe"
-        :card="recipe"
+        :key="recipe.id"
+        :card="{title: recipe.title, image: recipe.image, features: recipe.ingredients}"
         class="recipe-card"
       />
     </SlidingCarrousel>
     <footer class="button-container">
-      <button class="add-button button">+ Recipe</button>
+      <button class="add-button button" @click="openAddRecipeModal()">+ Recipe</button>
     </footer>
-    <ModalTemplate>
-      <template v-slot:modal-title>
-        <h3 class="modal-title">Add recipe</h3>
-      </template>
-      <template v-slot:modal-content>
-        <div class="modal-content"></div>
-      </template>
-      <template v-slot:modal-footer>
-        <div class="modal-footer"></div>
-      </template>
-    </ModalTemplate>
+
+    <ModalAddRecipe v-if="isOpenedAddRecipeModal">
+    </ModalAddRecipe>
   </div>
   
 </template>
@@ -44,20 +36,22 @@ import {
 } from '@/state/state';
 import { Recipe, RecipeCategory } from '@/interfaces';
 import ProductCard from '@/components/utils/ProductCard.vue'
-import ModalTemplate from '@/components/utils/ModalTemplate.vue'
+import ModalAddRecipe from '@/components/utils/ModalWindow/ModalAddRecipe.vue'
 
 
 
 export default defineComponent({
   name: 'RecipesSection',
   components: {
-    SlidingCarrousel, ProductCard, ModalTemplate,
+    SlidingCarrousel, ProductCard, ModalAddRecipe,
   },
 
   setup(){
     // State injections
     const {
       recipes,
+      isOpenedAddRecipeModal,
+      openAddRecipeModal,
     } = inject(RecipeStateKey)!
 
     // Carrousel navigator logic
@@ -87,7 +81,9 @@ export default defineComponent({
       recipesCategories,
       recipesByCategory,
       selectedCategory,
-      selectRecipesByCategory
+      selectRecipesByCategory,
+      isOpenedAddRecipeModal,
+      openAddRecipeModal,
     }
   }
 });
@@ -97,14 +93,4 @@ export default defineComponent({
 <style scoped lang="scss">
   @import "@/style/Global.scss";
   @import "@/style/Recipes/Recipes.scss";
-  .modal-title{
-    font-size: $font-size-h3;
-    font-weight: $font-weight-h3;
-  }
-  .modal-content{
-    
-  }
-  .modal-footer{
-
-  }
 </style>

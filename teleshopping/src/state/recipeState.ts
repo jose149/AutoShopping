@@ -18,11 +18,22 @@ export function setUpRecipeState(){
     // return recipes.value.find((recipe) => recipe.id === recipeId)
   }
 
+  const isOpenedAddRecipeModal = ref<boolean>(false)
+  function openAddRecipeModal(){
+    isOpenedAddRecipeModal.value = true;
+  }
+  function closeAddRecipeModal(){
+    isOpenedAddRecipeModal.value = false;
+  }
+
   const result = {
     recipes,
     selectedRecipe,
     recipeDetails,
-    getRecipeById
+    getRecipeById,
+    isOpenedAddRecipeModal,
+    openAddRecipeModal,
+    closeAddRecipeModal,
   }
   return result
 }
